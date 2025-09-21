@@ -20,15 +20,15 @@ import ReactDOM from "react-dom/client";
  *
  * */
 
-const div=React.createElement(
-    "div",
-    {id:"parent"},
-    [React.createElement('div',{id:'child1'},
-    [React.createElement('h1',{},'Im an H1 Tag'),React.createElement('h2',{},'Im an h2 tag')]), React.createElement('div',{id:'child2f'},
-    [React.createElement('h1',{},'Im an H1 Tag'),React.createElement('h2',{},'Im an h2 tag')])]);
+// const div=React.createElement(
+//     "div",
+//     {id:"parent"},
+//     [React.createElement('div',{id:'child1'},
+//     [React.createElement('h1',{},'Im an H1 Tag'),React.createElement('h2',{},'Im an h2 tag')]), React.createElement('div',{id:'child2f'},
+//     [React.createElement('h1',{},'Im an H1 Tag'),React.createElement('h2',{},'Im an h2 tag')])]);
 
-    const roots=ReactDOM.createRoot(document.getElementById('root'));
-    roots.render(div);
+//     const roots=ReactDOM.createRoot(document.getElementById('root'));
+//     roots.render(div);
 
 //  const heading = React.createElement(
 // 	"h1",
@@ -40,3 +40,51 @@ const div=React.createElement(
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // root.render(heading);
+
+// now we are ging to use JSX as creating the elements using react.createElement is heavy and not easy to understand
+// JSX is a syntactic sugar of react.createElement
+//JSX is not directly understood by the browser so we need to use babel to convert JSX to readable React code i.e react.cerateElement which the react core that is understood by the browser
+//JSX is faster than react.createElement as it uses the virtual DOM
+//JSX is not a string or HTML it is a combination of both
+//JSX is an object
+//JSX is type of expression
+//JSX can have only one parent element
+//JSX attributes are written in camelCase
+//JSX uses className instead of class
+//JSX is not same as HTML
+//JSX can contain JavaScript expressions inside {}
+//JSX can be nested inside other JSX
+// const jsxHeading=(<h1 class="heading" tabIndex="5">Namasthe React From JSX!!!</h1>);
+// console.log(jsxHeading);
+// const rootElement=ReactDOM.createRoot(document.getElementById("root"));
+// rootElement.render(jsxHeading);
+
+
+
+
+const HeadingComponent = function ()  {
+	return (
+		<div>
+			
+			<h1>Jai Shree Raam !!! </h1>
+			
+		</div>
+	);
+};
+
+const RaamComponent = (
+    <div>
+	<h1>This is Functional Component</h1>
+    <HeadingComponent></HeadingComponent>
+    <HeadingComponent />
+    {HeadingComponent()}
+    </div>
+);
+
+
+const mainRoot = ReactDOM.createRoot(document.getElementById("root"));
+mainRoot.render(RaamComponent);
+
+
+
+

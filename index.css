@@ -47,3 +47,29 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;}
+
+    .card{
+        background-color: #f0f0f0;
+        height: 300px;
+        width: 200px;
+        margin: 10px;
+        border-radius: 8px;
+    }
+    .shimmer-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        animation: shimmer 1.5s infinite;
+    }
+
+    .login{
+        margin: 10px;
+        padding: 10px;
+        font-size: 20px;
+        background-color: black;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+    }

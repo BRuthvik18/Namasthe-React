@@ -19,9 +19,9 @@
 }
 
 .restaurant-card{
-    width: 200px;
+    width: 270px;
     padding: 5px;
-    height: 300px;
+    height: 550px;
     border:1.5px solid black;
     margin: 5px;
 ;
@@ -32,9 +32,11 @@
 }
 .restaurant-logo{
     
-    width: 100%;
-
+   width: 100%;
+    /* height: 50%; */
+    object-fit: cover;
 }
+
 .restaurant-card:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;

@@ -2,36 +2,49 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { resCard } from "../Utilities/constants";
+import useRestaurantData from "../Utilities/useRestaurantData";
 const RestaurantMenu=()=>{
-    const [menuData,setMenuData]=useState(null);
-    const {resId}=useParams();
-    // const [items,setItems]=useState([]);
-    useEffect(()=>{
-        //API call
-        //get the restaurant Id from the URL
-        //https://www.swiggy.com/dapi/menu/v4/full?lat=28.6448&lng=77.216721&menuId=229
-        //https://www.swiggy.com/dapi/menu/v4/full?lat=28.6448&lng=77.216721&menuId={resId}
-        fetchData();
-    },[]);
 
-    const fetchData=async () =>{
-        const data=await fetch(resCard+resId);
-        const json=await data.json();
-        setMenuData(json.data);
-        // console.log(json.data);
-        // console.log(json?.data?.cards[2]?.card.card);
-        // console.log(json?.data?.cards[2]?.card.card?.info);
-        // console.log(json?.data?.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
-        // setItems(json?.data?.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
-        // console.log(json?.data?.groupedCard);
-        // console.log(json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
-        // console.log(data.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
+    const {resId}=useParams();
+
+    
+    // const [menuData,setMenuData]=useState(null);
+    // useEffect(()=>{
+    //     //API call
+    //     //get the restaurant Id from the URL
+    //     //https://www.swiggy.com/dapi/menu/v4/full?lat=28.6448&lng=77.216721&menuId=229
+    //     //https://www.swiggy.com/dapi/menu/v4/full?lat=28.6448&lng=77.216721&menuId={resId}
+    //     fetchData();
+    // },[]);
+
+    // const fetchData=async () =>{
+    //     const data=await fetch(resCard+resId);
+    //     const json=await data.json();
+    //     setMenuData(json.data);
+    //     // console.log(json.data);
+    //     // console.log(json?.data?.cards[2]?.card.card);
+    //     // console.log(json?.data?.cards[2]?.card.card?.info);
+    //     // console.log(json?.data?.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
+    //     // setItems(json?.data?.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
+    //     // console.log(json?.data?.groupedCard);
+    //     // console.log(json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
+    //     // console.log(data.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
         
-    }
-    // const {name,cuisines}=menuData?.cards[2]?.card?.card?.info;
+    // }
+
+
+
+
+
+    const menuData=useRestaurantData(resId);
+
+    if(menuData===null) return <Shimmer/>;
+
+
+
     const {name,cuisines,city,costForTwoMessage,avgRating,totalRatingsString}=menuData?.cards[2]?.card?.card?.info || {};
     const items=menuData?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards || [];
-    return menuData===null?<Shimmer/>: (
+    return (
         <div>
         <h1>{name}</h1>
         <h3>{cuisines.join(" ,")} </h3>

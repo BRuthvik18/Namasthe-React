@@ -75,3 +75,19 @@
         border: none;
         cursor: pointer;
     }
+
+    .user-func{
+        border: 2px solid black;
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        text-align: center;
+    }
+
+    .user-class{
+        border: 2px solid black;
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        text-align: center;
+    }

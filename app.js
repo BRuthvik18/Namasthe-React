@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./src/components/Body";
 import HeaderComponent from "./src/components/HeaderComponent";
@@ -7,6 +7,7 @@ import About from "./src/components/About";
 import Contact from "./src/components/Contact";
 import ErrorHandler from "./src/components/ErrorHandler";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+// import Bringo from "./src/components/Bringo";
 /**
  *
  *         <div id="parent">
@@ -111,6 +112,10 @@ import RestaurantMenu from "./src/components/RestaurantMenu";
 
 // const RestaurantCard = ( {resName,cuisines,rating} ) => {
 
+	// const Bringo=lazy(()=>import("./src/components/Bringo")); when i am writing this lazy loading is not happening, below
+	// may be the src is the major problem,remove src above you may see it working... 
+	const Bringo=React.lazy(()=>import("./src/components/Bringo"));
+
 const AppLayout = function () {
 	return (
 		<div className="app">
@@ -140,6 +145,11 @@ const appRoute = createBrowserRouter([
 			{
 				path:"/restaurant/:resId",
 				element:<RestaurantMenu/>,
+			}
+			,
+			{
+				path:"/bringo",
+				element: <Suspense fallback={ <h1>Suspensing SUS</h1> }> <Bringo/></Suspense>,
 			}
 		],
 		errorElement: <ErrorHandler />,

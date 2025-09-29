@@ -3,11 +3,17 @@ import { resObj } from "../Utilities/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useRestaurantList from "../Utilities/useRestaurantList";
+import useOnlineStatus from './../Utilities/useOnlineStatus';
 
 const Body = () => {
+	
+	// const resList=useRestaurantList();
+	
 	const [resList, setResList] = useState([]);
 
 	const [searchRes, setSearchRes] = useState([]);
+	
 
 	const [serRes, setSerRes] = useState("");
 
@@ -40,6 +46,12 @@ const Body = () => {
 	
 	};
 	// console.log(searchRes)
+
+
+	const onlineStatus=useOnlineStatus();
+	if(onlineStatus==false) return <h1> OOPS! Something is wrong !, Check Your Internet Connection!  </h1>
+
+
 	return resList.length === 0 ? (
 		<Shimmer />
 	) : (
